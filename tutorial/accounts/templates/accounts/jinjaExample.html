@@ -1,0 +1,28 @@
+<html>
+
+<head>
+    <title>Login</title>
+
+    {% load static %}
+    <link rel="stylesheet" href={% static 'accounts/style.css' %} type="text/css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome</h1>
+        Welcome, you can login here
+        <button class="btn btn-default" type="button" name="buttom">login</button>
+    </div>
+    <div class="jumbotron">
+        <h1>Welcome</h1>
+    </div>
+    <h1>{{ myName }}</h1>
+    <ul>
+        {% for number in allNumbers %}
+        <li>{{ number }}</li>
+        {% endfor %}
+    </ul>
+
+</body>
+
+</html>
