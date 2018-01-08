@@ -1,15 +1,74 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous"> {% block head %}
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% block head %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
     <title>Base</title>
     {% endblock %}
 </head>
 
+
 <body>
+    <br>
+    <div class="container">
+        <!-- Static navbar -->
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                  <span class="sr-only">Toggle navigation</span>
+                                  <span class="icon-bar"></span>
+                                  <span class="icon-bar"></span>
+                                  <span class="icon-bar"></span>                                  
+                        </button>
+                    <a class="navbar-brand" href="/">Social Network (Login App)</a>
+                </div>
+                <!--create buttons/links on the navigation bar-->
+                <div id="navbar" class="navbar-collapse collapse">
+                    {% if user.is_authenticated %}
+                    <ul class="nav navbar-nav">
+                        <li><a href="/account">Home</a></li>
+                        <li><a href={% url 'accounts:view_profile' %}>Profile</a></li>
+                        <li><a href={% url 'accounts:edit_profile' %}>Edit Profile</a></li>
+                        <li><a href={% url 'accounts:change_password' %}>Change Password</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href={% url 'accounts:logout' %}>Log Out</a></li>
+                    </ul>
+
+                    {% else %}
+                    <ul class="nav navbar-nav">
+                        <li><a href={% url 'accounts:reset_password' %}>Reset Password</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/account/login">Login</a></li>
+                        <li><a href="/account/register">Register</a></li>
+                    </ul>
+                    {% endif %}
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+            <!--/.container-fluid -->
+        </nav>
+    </div>
 
     {% block body %}
-    <h1>base</h1>{% endblock %}
+    <h1>base</h1>
+    {% endblock %}
 </body>
+
+
 
 </html>
