@@ -5,6 +5,8 @@ from django.shortcuts import redirect
 from django.contrib.auth import logout
 from django.urls import reverse
 
+# some random comments
+
 # a list contains compiled version of regular expression in urls
 EXEMPT_URLS = [re.compile(settings.LOGIN_URL.lstrip('/'))]
 if hasattr(settings,'LOGIN_EXEMPT_URLS'):
